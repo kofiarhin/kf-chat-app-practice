@@ -13,7 +13,7 @@ const server = http.createServer(app);
 
 const io = new Server(server, {
   cors: {
-    origin: "*",
+    origin: "https://kf-chat-app-practice.onrender.com/",
     methods: ["GET", "POST"],
   },
 });
