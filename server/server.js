@@ -7,8 +7,8 @@ const path = require("path");
 const app = express();
 
 app.use(cors());
-app.use(express.static("dist/assets"));
-
+const publicPath = path.resolve(__dirname, ".", "dist");
+app.use(express.static(publicPath));
 const server = http.createServer(app);
 
 const io = new Server(server, {
@@ -26,8 +26,6 @@ io.on("connection", (socket) => {
 
 app.get("*", (req, res) => {
   const filePath = path.join(__dirname, "dist", "index.html");
-
-  console.log(filePath);
   return res.sendFile(filePath);
 });
 
